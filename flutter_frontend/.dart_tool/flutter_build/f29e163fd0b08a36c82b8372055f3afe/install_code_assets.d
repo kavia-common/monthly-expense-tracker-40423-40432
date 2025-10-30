@@ -1,0 +1,1 @@
+ /home/kavia/workspace/code-generation/monthly-expense-tracker-40423-40432/flutter_frontend/.dart_tool/flutter_build/f29e163fd0b08a36c82b8372055f3afe/native_assets.json: 

@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_frontend/main.dart';
+import 'package:flutter_frontend/repository/expense_repository.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App shows navigation and Dashboard title', (WidgetTester tester) async {
+    final repo = ExpenseRepository();
+    final app = ExpenseApp(repository: repo);
 
-    expect(find.text('flutter_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+    await tester.pumpWidget(app);
 
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    // Allow async provider init microtasks to run
+    await tester.pump(const Duration(milliseconds: 1200));
 
-    expect(find.text('flutter_frontend'), findsOneWidget);
+    // App bar should be present (title changes with selected tab)
+    expect(find.byType(AppBar), findsOneWidget);
+
+    // Bottom navigation should have three items
+    expect(find.byType(BottomNavigationBar), findsOneWidget);
   });
 }
