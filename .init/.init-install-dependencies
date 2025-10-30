@@ -1,0 +1,4 @@
+{
+    "command": "flutter pub get",
+    "working_directory": "/home/kavia/workspace/code-generation/monthly-expense-tracker-40423-40432/flutter_frontend"
+}
